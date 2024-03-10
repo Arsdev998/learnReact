@@ -1,10 +1,11 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <>
-      <nav>This is Navbar</nav>
+      <Navbar />
       <Outlet />
       <footer>this is footer</footer>
     </>

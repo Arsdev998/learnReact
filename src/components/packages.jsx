@@ -27,7 +27,7 @@ const Packages = () => {
 
   //pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerpage = 8;
+  const productsPerpage = 10;
 
   const indexOflastProduct = currentPage * productsPerpage;
   const indexOfFirstProduct = indexOflastProduct - productsPerpage;

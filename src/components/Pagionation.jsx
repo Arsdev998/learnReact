@@ -30,7 +30,7 @@ const Pagionation = ({
         <li
           key={number}
           className={`bg-yellow-200 px-3 py-1 rounded-[100%] text-black ${
-            number === activePage ? "bg-red-600" : ""
+            number === activePage ? "!bg-red-600 text-white" : ""
           }`}
         >
           <button
