@@ -6,7 +6,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [downArrow, setDwonArrow] = useState(false);
-  
+
   return (
     <header className="flex justify-between px-10 py-10 relative">
       <div>
@@ -20,7 +20,7 @@ const Navbar = () => {
       </div>
       <nav>
         <ul
-          className={`flex flex-col md:flex-row gap-y-[24px] bg-white md:bg-transparent p-10   md:z-auto z-[-1] md:w-auto sm:p-10 md:p-0 pl-[15px] w-[300px]  md:gap-[10px] 2xl:gap-[40px] md:items-center md:text-[16px] text-[#414141] font-semibold absolute md:static  transition-all duration-500 ease-in ${
+          className={`flex flex-col md:flex-row gap-y-[24px] bg-white md:bg-transparent p-10   md:z-auto z-[11] md:w-auto sm:p-10 md:p-0 pl-[15px] w-[300px]  md:gap-[10px] 2xl:gap-[40px] md:items-center md:text-[16px] text-[#414141] font-semibold absolute md:static  transition-all duration-500 ease-in ${
             open ? " right-[0px] z-10 top-10 w-full" : "right-[-299px]  z-10"
           }`}
         >
@@ -45,7 +45,7 @@ const Navbar = () => {
             </ul>
           </li>
           <li className="hover:underline transition-all duration-200">
-            <Link>About</Link>
+            <Link to={"/product"}>Product</Link>
           </li>
           <li className="hover:underline transition-all duration-200">
             <Link>Contact</Link>
