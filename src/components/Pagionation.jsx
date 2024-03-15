@@ -10,7 +10,6 @@ const Pagionation = ({
   for (let i = 1; i <= Math.ceil(totalProducts / productsPerpage); i++) {
     pageNumber.push(i);
   }
-  console.log(activePage);
   return (
     <ul className="flex items-center gap-3 justify-center mt-5">
       <li className="bg-yellow-200 p-2 rounded-full">

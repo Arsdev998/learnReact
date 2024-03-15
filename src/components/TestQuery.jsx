@@ -18,7 +18,7 @@ function TestQuery() {
           throw new Error("There was an error fetching the data");
         }),
     // staleTime: 4000,
-    refetchInterval: 4000,
+    // refetchInterval: 4000,
   });
 
   const { mutate, isPending, isError, isSuccess } = useMutation({
@@ -44,7 +44,7 @@ function TestQuery() {
   if (!data) return null;
 
   return (
-    <section className="flex flex-wrap gap-5  justify-center">
+    <section className="flex flex-col justify-center">
       {isPending && <Loading />}
       <button
         onClick={() =>
@@ -66,20 +66,22 @@ function TestQuery() {
       >
         Add Data
       </button>
-      {data.map((item) => (
-        <div
-          key={item.id}
-          className="p-[20px] bg-slate-700 max-w-[320px] rounded-md"
-        >
-          <img
-            className="w-[300px] h-[300px] object-cover"
-            src={item.image}
-            alt={item.title}
-          />
-          <p className="truncate text-white">{item.title}</p>
-          <p className="text-red-400">${item.price}</p>
-        </div>
-      ))}
+      <section className="flex flex-wrap gap-5  justify-center">
+        {data.map((item) => (
+          <div
+            key={item.id}
+            className="p-[20px] bg-slate-700 max-w-[320px] rounded-md"
+          >
+            <img
+              className="w-[300px] h-[300px] object-cover"
+              src={item.image}
+              alt={item.title}
+            />
+            <p className="truncate text-white">{item.title}</p>
+            <p className="text-red-400">${item.price}</p>
+          </div>
+        ))}
+      </section>
     </section>
   );
 }

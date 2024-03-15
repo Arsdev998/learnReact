@@ -1,17 +1,86 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BiArchive } from "react-icons/bi";
 import { MdOutlineAirlineSeatLegroomExtra, MdWatchLater } from "react-icons/md";
 import { FaPlaneArrival, FaPlane, FaCalendarAlt } from "react-icons/fa";
-import { IoStar } from "react-icons/io5";
+// import { IoStar } from "react-icons/io5";
+
 const PackageCard = ({ packages }) => {
+  const [originalPackages, setOriginalPackages] = useState([]);
+  const [filteredPackage, setFilteredPackage] = useState([]);
+
+  useEffect(() => {
+    setOriginalPackages(packages);
+    setFilteredPackage(packages);
+  }, [packages]);
+
+  // Filter dengan Maskapai
+  const filterMaskapaiName = (maskapaiName) => {
+    const filtered = originalPackages.filter((pkg) =>
+      pkg.maskapaiName.toLowerCase().includes(maskapaiName.toLowerCase())
+    );
+    setFilteredPackage(filtered);
+  };
+
+  // Filter dengan Judul Paket
+  const filterMaskaJudul = (judul_paket) => {
+    const filtered = originalPackages.filter((pkg) =>
+      pkg.judul_paket.toLowerCase().includes(judul_paket.toLowerCase())
+    );
+    setFilteredPackage(filtered);
+  };
+
+  // Reset filter
+  const resetFilter = () => {
+    setFilteredPackage(originalPackages);
+  };
+
+  const filterButtons = [
+    { label: "My Indo Airlines", maskapaiName: "indo Airlines" },
+    { label: "Garuda Indonesia", maskapaiName: "Garuda Indonesia" },
+    { label: "Citilink", maskapaiName: "Citilink" },
+    { label: "Sriwijaya Air", maskapaiName: "Sriwijaya" },
+    { label: "Trigana Air", maskapaiName: "trigana air" },
+  ];
+  const filterJudul = [
+    { label: "Umrah", judul: "Umrah" },
+    { label: "Haji", judul: "Haji" },
+    { label: "Tour", judul: "Tour" },
+  ];
+
   const rp = (asoy) => {
     return asoy.toLocaleString("id-ID");
   };
+
   return (
-    <div>
-      {" "}
+    <div className="w-[1500px]">
+      <div className="flex justify-center gap-2 my-4">
+        {filterButtons.map((button, index) => (
+          <button
+            key={index}
+            className="p-2 bg-[#ee2e2a] rounded-xl text-[#fff]"
+            onClick={() => filterMaskapaiName(button.maskapaiName)}
+          >
+            {button.label}
+          </button>
+        ))}
+        {filterJudul.map((btn, index) => (
+          <button
+            key={index}
+            className="p-2 bg-[#ee2e2a] rounded-xl text-[#fff]"
+            onClick={() => filterMaskaJudul(btn.judul)}
+          >
+            {btn.label}
+          </button>
+        ))}
+        <button
+          className="p-2 bg-[#ee2e2a] rounded-xl text-[#fff]"
+          onClick={() => resetFilter()}
+        >
+          Reset Filter
+        </button>
+      </div>
       <div className="flex flex-wrap gap-[20px] justify-center">
-        {packages.map((pkg) => (
+        {filteredPackage.map((pkg) => (
           <div
             className="w-[300px] h-full  relative bg-[#ffffff] rounded-xl "
             key={pkg.id}
@@ -46,7 +115,8 @@ const PackageCard = ({ packages }) => {
                 {pkg.maskapaiName}
               </p>
               <p className="flex items-center truncate">
-                <FaPlaneArrival className="text-[#ee2e2a]" /> {pkg.mendarat_di}
+                <FaPlaneArrival className="text-[#ee2e2a]" />
+                {pkg.mendarat_di}
               </p>
               <p>{"⭐".repeat(pkg.hotel_star)}</p>
             </div>

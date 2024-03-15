@@ -48,7 +48,7 @@ const Navbar = () => {
             <Link to={"/product"}>Product</Link>
           </li>
           <li className="hover:underline transition-all duration-200">
-            <Link>Contact</Link>
+            <Link to={'/test'}>Contact</Link>
           </li>
         </ul>
       </nav>
